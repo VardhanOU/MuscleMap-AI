@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import BodyFront from './BodyFront'
 import BodyBack from './BodyBack'
 import ExerciseList from './ExerciseList'
@@ -190,14 +191,30 @@ const MuscleMap = () => {
                 <ExerciseList muscleName={selectedMuscle} exercises={muscles} />
               ) : (
                 <div className="flex items-center justify-center h-96 text-gray-400">
-                  <div className="text-center">
+                  <div className="text-center w-full max-w-md mx-auto">
                     <svg className="w-16 h-16 mx-auto mb-4 opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                     </svg>
-                    <h3 className="text-lg font-semibold text-white mb-2">Explore Muscles</h3>
-                    <p className="text-gray-500 max-w-xs text-sm">
-                      Click on any muscle region on the body map or select from the list below.
+                    <h3 className="text-xl font-semibold text-white mb-2">Explore Muscles</h3>
+                    <p className="text-gray-500 mb-10 text-sm">
+                      Click on any muscle region on the body map or select from the list below to see exercises.
                     </p>
+                    
+                    <div className="bg-dark/60 rounded-2xl p-6 border border-border/60">
+                      <h4 className="text-white font-medium mb-2">Ready to build a routine?</h4>
+                      <p className="text-sm text-gray-400 mb-5">
+                        Create an account to use the AI Workout Planner and save your custom routines.
+                      </p>
+                      <Link 
+                        to="/generator" 
+                        className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary hover:bg-primary hover:text-white font-medium rounded-lg transition-all duration-300 text-sm"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        Try Workout Planner
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}

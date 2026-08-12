@@ -17,18 +17,13 @@ const Navbar = () => {
     navigate('/')
   }
 
-  const navLinks = [
+  const allLinks = [
     { path: '/', label: 'Home' },
     { path: '/muscle-map', label: 'Muscle Map' },
+    { path: '/generator', label: 'Workout Planner', protected: true },
+    { path: '/saved-plans', label: 'Saved Plans', protected: true },
+    ...(user ? [{ path: '/dashboard', label: 'Dashboard', protected: true }] : []),
   ]
-
-  const protectedLinks = [
-    { path: '/generator', label: 'Generator' },
-    { path: '/saved-plans', label: 'Saved Plans' },
-    { path: '/dashboard', label: 'Dashboard' },
-  ]
-
-  const allLinks = user ? [...navLinks, ...protectedLinks] : navLinks
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-dark border-b border-border">
@@ -50,12 +45,17 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   location.pathname === link.path
                     ? 'bg-primary/10 text-primary'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
               >
+                {link.protected && !user && (
+                  <svg className="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                )}
                 {link.label}
               </Link>
             ))}
@@ -119,12 +119,17 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   location.pathname === link.path
                     ? 'bg-primary/10 text-primary'
                     : 'text-gray-400 hover:text-white hover:bg-white/5'
                 }`}
               >
+                {link.protected && !user && (
+                  <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                )}
                 {link.label}
               </Link>
             ))}
