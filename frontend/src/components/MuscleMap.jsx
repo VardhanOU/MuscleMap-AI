@@ -148,7 +148,7 @@ const MuscleMap = () => {
         {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Anatomy SVG */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-6">
             <div className="bg-card rounded-2xl p-6 border border-border/50 sticky top-24">
               <div className="bg-dark/30 rounded-xl p-4">
                 {side === 'front' ? (
@@ -184,7 +184,7 @@ const MuscleMap = () => {
           </div>
 
           {/* Exercise list */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-6">
             <div className="bg-card rounded-2xl p-6 border border-border/50 min-h-[500px]">
               {selectedMuscle ? (
                 <ExerciseList muscleName={selectedMuscle} exercises={muscles} />
@@ -203,6 +203,12 @@ const MuscleMap = () => {
               )}
             </div>
           </div>
+        </div>
+
+        {/* Attribution for anatomical images */}
+        <div className="mt-8 text-center text-xs text-gray-500">
+          Anatomical base illustrations generated for demo purposes. 
+          Derivative works must maintain <a href="https://creativecommons.org/licenses/by-sa/2.1/jp/en/" className="text-primary hover:underline" target="_blank" rel="noreferrer">CC-BY-SA</a> attribution in production.
         </div>
       </div>
     </div>
